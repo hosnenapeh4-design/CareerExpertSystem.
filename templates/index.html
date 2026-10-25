@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Expert System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .quiz-form { max-width: 850px; margin: 30px auto; }
+        .question-box { background: white; padding: 22px; margin: 18px 0;
+            border-radius: 14px; box-shadow: 0 4px 18px #00000012; }
+        .question-box h3 { margin-top: 0; }
+        .question-box label { display: block; margin: 12px 0; cursor: pointer; }
+        .question-box input, .question-box select { margin-right: 8px; }
+        .question-box select { padding: 10px; width: 100%; max-width: 500px; }
+        .submit-btn { padding: 14px 24px; border: 0; border-radius: 10px;
+            cursor: pointer; font-size: 16px; }
+        .result-card { background: white; padding: 20px; margin: 16px 0;
+            border-radius: 14px; box-shadow: 0 4px 18px #00000012; }
+        .score { font-weight: bold; }
+        .note { color: #555; font-size: .95rem; }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <nav class="navbar">
+            <h2>Career Expert System</h2>
+        </nav>
+        <div class="hero-content">
+            <h1>Discover Your Best-Fit Department</h1>
+            <p>Answer the questions to receive recommendations based on your interests,
+               knowledge, and educational background.</p>
+        </div>
+    </header>
+
+    <main class="quiz-form">
+        <form method="POST">
+            <section class="question-box">
+                <h3>1. What is your current educational stage?</h3>
+                <label><input type="radio" name="education_stage" value="school" required> High school student</label>
+                <label><input type="radio" name="education_stage" value="graduate"> High school graduate</label>
+                <label><input type="radio" name="education_stage" value="college"> Currently in college</label>
+            </section>
+
+            <section class="question-box">
+                <h3>2. What type of high school did you attend?</h3>
+                <label><input type="radio" name="school_type" value="general" required> General secondary school</label>
+                <label><input type="radio" name="school_type" value="technical"> Technical / vocational school</label>
+                <label><input type="radio" name="school_type" value="other"> Other</label>
+            </section>
+
+            <section class="question-box">
+                <h3>3. Which track or specialization did you study?</h3>
+                <label><input type="radio" name="school_track" value="science"> Science</label>
+                <label><input type="radio" name="school_track" value="math"> Mathematics</label>
+                <label><input type="radio" name="school_track" value="literary"> Literary / humanities</label>
+                <label><input type="radio" name="school_track" value="industrial"> Industrial</label>
+                <label><input type="radio" name="school_track" value="commercial"> Commercial</label>
+                <label><input type="radio" name="school_track" value="other"> Other / not listed</label>
+            </section>
+
+            <section class="question-box">
+                <h3>4. How would you rate your English level?</h3>
+                <label><input type="radio" name="english_level" value="beginner" required> Beginner</label>
+                <label><input type="radio" name="english_level" value="intermediate"> Intermediate</label>
+                <label><input type="radio" name="english_level" value="good"> Good</label>
+                <label><input type="radio" name="english_level" value="excellent"> Excellent</label>
+            </section>
+
+            <section class="question-box">
+                <h3>5. How would you rate your mathematics level?</h3>
+                <label><input type="radio" name="math_level" value="beginner" required> Beginner</label>
+                <label><input type="radio" name="math_level" value="intermediate"> Intermediate</label>
+                <label><input type="radio" name="math_level" value="good"> Good</label>
+                <label><input type="radio" name="math_level" value="excellent"> Excellent</label>
+            </section>
+
+            <section class="question-box">
+                <h3>6. How much programming do you know?</h3>
+                <label><input type="radio" name="programming_level" value="beginner" required> No experience / beginner</label>
+                <label><input type="radio" name="programming_level" value="intermediate"> I know the basics</label>
+                <label><input type="radio" name="programming_level" value="good"> I can write small programs</label>
+                <label><input type="radio" name="programming_level" value="excellent"> I can build projects independently</label>
+            </section>
+
+            <section class="question-box">
+                <h3>7. How much do you know about Artificial Intelligence?</h3>
+                <label><input type="radio" name="ai_level" value="beginner" required> Very little / beginner</label>
+                <label><input type="radio" name="ai_level" value="intermediate"> I understand the basic ideas</label>
+                <label><input type="radio" name="ai_level" value="good"> I have studied AI concepts or tools</label>
+                <label><input type="radio" name="ai_level" value="excellent"> I have tried AI projects</label>
+            </section>
+
+            <section class="question-box">
+                <h3>8. Which activities interest you? Select all that apply.</h3>
+                <p class="note">Choose any number of interests.</p>
+                <label><input type="checkbox" name="skills" value="programming"> Programming and coding</label>
+                <label><input type="checkbox" name="skills" value="ai"> Artificial Intelligence and smart applications</label>
+                <label><input type="checkbox" name="skills" value="math"> Mathematics and logical problems</label>
+                <label><input type="checkbox" name="skills" value="problem_solving"> Solving difficult problems</label>
+                <label><input type="checkbox" name="skills" value="data"> Data analysis and finding patterns</label>
+                <label><input type="checkbox" name="skills" value="statistics"> Statistics and numbers</label>
+                <label><input type="checkbox" name="skills" value="analysis"> Research and analysis</label>
+                <label><input type="checkbox" name="skills" value="security"> Protecting systems and information</label>
+                <label><input type="checkbox" name="skills" value="networks"> Computer networks</label>
+                <label><input type="checkbox" name="skills" value="robotics"> Robots and intelligent machines</label>
+                <label><input type="checkbox" name="skills" value="electronics"> Electronics and circuits</label>
+                <label><input type="checkbox" name="skills" value="mechanics"> Mechanical devices and machines</label>
+                <label><input type="checkbox" name="skills" value="cars"> Cars and vehicle technology</label>
+                <label><input type="checkbox" name="skills" value="sensors"> Sensors and vehicle systems</label>
+                <label><input type="checkbox" name="skills" value="control"> Control systems</label>
+                <label><input type="checkbox" name="skills" value="automation"> Automation and industrial systems</label>
+                <label><input type="checkbox" name="skills" value="clothing"> Clothes, textiles, and fabrics</label>
+                <label><input type="checkbox" name="skills" value="design"> Design and visual creativity</label>
+                <label><input type="checkbox" name="skills" value="creativity"> Creative hands-on work</label>
+                <label><input type="checkbox" name="skills" value="manufacturing"> Manufacturing and production</label>
+            </section>
+
+            <section class="question-box">
+                <h3>9. Which department are you most interested in?</h3>
+                <select name="preferred_department" required>
+                    <option value="">-- Choose a department --</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Mechatronics">Mechatronics</option>
+                    <option value="Autotronics">Autotronics</option>
+                    <option value="Clothing Technology">Clothing Technology</option>
+                    <option value="Control and Systems">Control and Systems</option>
+                    <option value="not_sure">I am not sure yet</option>
+                </select>
+            </section>
+
+            <section class="question-box">
+                <h3>10. What do you want from this assessment?</h3>
+                <p class="note">Your results will suggest departments and areas to improve.</p>
+                <label><input type="checkbox" name="goals" value="career"> Understand my possible career direction</label>
+                <label><input type="checkbox" name="goals" value="skills"> Know which skills I should improve</label>
+                <label><input type="checkbox" name="goals" value="explore"> Explore departments I do not know well</label>
+            </section>
+
+            <button class="submit-btn" type="submit">Analyze My Answers</button>
+        </form>
+
+        {% if results %}
+        <section class="question-box">
+            <h2>Your Recommended Departments</h2>
+            <p class="note">These recommendations are based on your answers, not a guarantee of future success.</p>
+            {% for result in results %}
+            <article class="result-card">
+                <h3>{{ loop.index }}. {{ result.field }}</h3>
+                <p class="score">Match score: {{ result.score }}%</p>
+                <p>{{ result.description }}</p>
+                <p><strong>What to learn next:</strong> {{ result.advice }}</p>
+                <ul>
+                    {% for reason in result.reasons %}
+                    <li>{{ reason }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+            {% endfor %}
+            <button type="button" class="submit-btn" onclick="window.location.href='/'">Retake the Quiz</button>
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>
